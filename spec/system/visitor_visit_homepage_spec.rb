@@ -5,7 +5,7 @@ describe 'Visiter' do
         it 'successfully' do
             visit root_path
 
-            expect(page).to have_content('paynow')
+            expect(page).to have_content('Paynow')
         end
     end
 end

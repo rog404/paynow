@@ -1,0 +1,27 @@
+---
+pt-BR:
+  companies:
+    index:
+      empty: Nenhuma empresa cadastrada
+      title: Empresas
+    new:
+      title: Adicionar uma nova empresa
+      back: Voltar
+    show:
+      back: Voltar
+      new_token: Gerar novo Token
+    create:
+      success: Empresa adicionada com sucesso
+  activerecord:
+    models:
+      company: Empresa
+    attributes:
+      company/state:
+        active: Ativo
+        disabled: Desativado
+      company:
+        cnpj: CNPJ
+        name: Razão Social
+        email: Email
+        address: Endereço
+        token: Token
