@@ -11,7 +11,7 @@
                 <div class="fw-bold"><%= link_to company.name, company_path(company) %></div>
                 <div class="card-text"><%= company.email %></div>
             </div>
-            <span class="badge <%= company.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= t company.state %></span>
+            <span class="badge <%= company.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Company.human_attribute_name "state.#{company.state}" %></span>
         </li>
     <% end %>
     <%= link_to 'Adicionar', new_company_path, class: 'btn btn-dark my-3' %>

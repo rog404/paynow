@@ -1,6 +1,6 @@
 <%= link_to t('.back'), companies_path, class: 'btn btn-dark my-3' %>
 <h1><%= @company.name %></h1>
-<span class="badge <%= @company.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= t @company.state %></span>
+<span class="badge <%= @company.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Company.human_attribute_name "state.#{@company.state}" %></span>
 <ul class="list-group my-3">
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
@@ -24,7 +24,8 @@
             <div class="ms-2 me-auto">
                 <div class="fw-bold">Token</div>
                 <div><%= @company.token %></div>
-                <%= link_to t('.new_token'), '#', class: 'btn btn-warning' %>
+                <%= link_to t('.new_token'), retoken_company_path(@company), method: :patch, class: 'btn btn-warning' %>
             </div>
         </li>
 </ul>
+<%= link_to t('.edit'), edit_company_path, class: 'btn btn-dark my-3' %>

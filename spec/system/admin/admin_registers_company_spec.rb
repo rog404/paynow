@@ -9,12 +9,13 @@ describe 'Admin registers company' do
         fill_in 'Razão Social', with: 'Udemy cursos'
         fill_in 'Email', with: 'faturamento@udemy.com'
         fill_in 'Endereço', with: 'R. Salvador Dali, 2452, Palma - TO'
+        check 'check'
         click_on 'Criar Empresa'
 
         expect(page).to have_content('Empresa adicionada com sucesso')
         expect(page).to have_content('Udemy cursos')
         expect(page).to have_content('faturamento@udemy.com')
-        expect(page).to have_content('Disabled')
+        expect(page).to have_content('Ativo')
     end
 
     it 'and attributes cannot be blank' do
@@ -26,7 +27,7 @@ describe 'Admin registers company' do
         expect(page).to have_content('não pode ficar em branco', count: 4)
     end
 
-    xit 'and code must be unique' do
+    it 'and code must be unique' do
         Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                         email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
     

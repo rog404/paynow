@@ -11,31 +11,35 @@
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-    <%= link_to 'Paynow.com', root_path ,class: 'navbar-brand'%>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to 'Home', root_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Empresas', companies_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Métodos de Pagamento</a>
-        </li>
-  </nav>
-  <div class= "container">
-    <% if notice %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4">
+      <%= link_to 'Paynow.com', root_path ,class: 'navbar-brand'%>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <%= link_to 'Home', root_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Empresas', companies_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Métodos de Pagamento</a>
+          </li>
+    </nav>
+    <div class= "container">
+      <% if notice %>
         <div class="alert alert-success">
-          <%= notice %>
+          <div class="row justify-content-between">
+            <div class="col"><%= notice %></div>
+          </div>
         </div>
       <% end %>
       <% if alert %>
         <div class="alert alert-danger">
-          <%= alert %>
+          <div class="row justify-content-between">
+            <div class="col-4"><%= alert %></div>
+          </div>
         </div>
       <% end %>
       <%= yield %>
-  </div>
+    </div>
   </body>
 </html>

@@ -10,8 +10,17 @@ pt-BR:
     show:
       back: Voltar
       new_token: Gerar novo Token
+      edit: Editar
     create:
       success: Empresa adicionada com sucesso
+    edit:
+      title: Editar uma empresa
+      back: Voltar
+    update:
+      success: Empresa atualizada com sucesso
+    retoken:
+      success: Novo token gerado com sucesso
+      error: Erro na geração do token
   activerecord:
     models:
       company: Empresa
