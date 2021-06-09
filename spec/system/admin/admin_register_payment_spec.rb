@@ -8,7 +8,7 @@ describe 'Admin register payment' do
             
             visit root_path
             click_on 'Empresas'
-            ckick_on 'Codeplay cursos online LTDA'
+            click_on 'Codeplay cursos online LTDA'
             click_on 'Métodos de Pagamento'
             click_on 'Adicionar novo método'
             click_on 'PIX'
@@ -23,9 +23,12 @@ describe 'Admin register payment' do
         end
 
         it 'and cannot be blank' do
+            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
+                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+
             visit root_path
             click_on 'Empresas'
-            ckick_on 'Codeplay cursos online LTDA'
+            click_on 'Codeplay cursos online LTDA'
             click_on 'Métodos de Pagamento'
             click_on 'Adicionar novo método'
             click_on 'PIX'

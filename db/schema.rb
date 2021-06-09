@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_211102) do
+ActiveRecord::Schema.define(version: 2021_06_08_215704) do
+
+  create_table "boleto_companions", force: :cascade do |t|
+    t.string "bank_code"
+    t.string "bank_agency"
+    t.string "bank_account"
+    t.integer "boleto_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "cnpj"
@@ -19,6 +28,31 @@ ActiveRecord::Schema.define(version: 2021_06_06_211102) do
     t.text "address"
     t.string "token"
     t.integer "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "credit_card_companions", force: :cascade do |t|
+    t.string "code"
+    t.integer "credit_card_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payment_methods", force: :cascade do |t|
+    t.string "type"
+    t.decimal "fee"
+    t.decimal "max_money_fee"
+    t.integer "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+  end
+
+  create_table "pix_companions", force: :cascade do |t|
+    t.string "key"
+    t.string "bank_code"
+    t.integer "pix_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -3,29 +3,35 @@
 <span class="badge <%= @company.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Company.human_attribute_name "state.#{@company.state}" %></span>
 <ul class="list-group my-3">
         <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto row">
                 <div class="fw-bold">CNPJ</div>
                 <div><%= @company.cnpj %></div>
             </div>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto row">
                 <div class="fw-bold">Email</div>
                 <div><%= @company.email %></div>
             </div>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
+            <div class="ms-2 me-auto row">
                 <div class="fw-bold">Endereço</div>
                 <div><%= @company.address %></div>
             </div>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
-            <div class="ms-2 me-auto">
-                <div class="fw-bold">Token</div>
-                <div><%= @company.token %></div>
-                <%= link_to t('.new_token'), retoken_company_path(@company), method: :patch, class: 'btn btn-warning' %>
+            <div class="ms-2 me-auto row align-items-center" >
+                <div class="col">
+                    <div class="fw-bold">Token</div>
+                    <div><%= @company.token %></div>
+                </div>
+                <div class="col">
+                    <%= link_to t('.new_token'), retoken_company_path(@company), method: :patch, class: 'btn btn-warning' %>
+                </div>
             </div>
         </li>
 </ul>
 <%= link_to t('.edit'), edit_company_path, class: 'btn btn-dark my-3' %>
+<h2>Métodos de Pagamento</h2>
+<%= link_to t('.add_method'), method_chosen_company_payment_methods_path(@company), class: 'btn btn-primary my-3' %>

@@ -11,6 +11,7 @@ pt-BR:
       back: Voltar
       new_token: Gerar novo Token
       edit: Editar
+      add_method: Adicionar novo método
     create:
       success: Empresa adicionada com sucesso
     edit:
