@@ -8,8 +8,11 @@
     <% @payments.each do |payment| %>
         <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="row row-cols-lg-6 gx-1 container justify-content-center">
-                 <div class="col-3 text-center align-self-center">
+                    <div class="col-3 text-center align-self-center">
                         <div class="btn btn-dark "></div>
+                    </div>
+                    <div class="col-3 text-center align-self-center">
+                        <span class="badge  <%= payment.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Payment.human_attribute_name "state.#{payment.state}" %></span>
                     </div>
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= payment.description %></div>
@@ -22,9 +25,6 @@
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= t '.max_money_fee' %></div>
                         <div class="card-text"><%= number_to_currency payment.max_money_fee %></div>
-                    </div>
-                    <div class="col-3 text-center align-self-center">
-                        <span class="badge  <%= payment.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Payment.human_attribute_name "state.#{payment.state}" %></span>
                     </div>
                     <div class="col-3 text-center align-self-center">
                             <%= link_to edit_payment_path(payment) do %>

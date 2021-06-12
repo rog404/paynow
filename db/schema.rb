@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_200437) do
+ActiveRecord::Schema.define(version: 2021_06_12_174241) do
 
   create_table "boleto_companions", force: :cascade do |t|
     t.string "bank_code"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_06_11_200437) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "payment_id", null: false
     t.integer "company_id", null: false
+    t.string "token"
     t.index ["company_id"], name: "index_payment_methods_on_company_id"
     t.index ["payment_id"], name: "index_payment_methods_on_payment_id"
   end

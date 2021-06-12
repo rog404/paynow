@@ -9,13 +9,13 @@ pt-BR:
       edit: Editar
       add: Adicionar
     new:
-      pix_title: Adicionar o método Pix
-      credit_card_title: Adicionar o método de Cartão de Crédito
-      boleto_title: Adicionar o método de Boleto
+      pix_title: Adicionar um método Pix
+      credit_card_title: Adicionar um método de Cartão de Crédito
+      boleto_title: Adicionar um método de Boleto
       back: Voltar
-      save_pix: Salvar Pix
-      save_boleto: Salvar Boleto
-      save_credit_card: Salvar Cartão
+      save_pix: Adicionar PIX
+      save_boleto: Adicionar Boleto
+      save_credit_card: Adicionar Cartão
     create:
       success: Método adicionado com sucesso
     edit:
@@ -32,11 +32,9 @@ pt-BR:
         Boleto: Boleto
         Pix: PIX
       payment_method:
-        fee: Taxa
-        max_money_fee: Taxa Máxima em Reais
         code: Código do cartão de crédito
         key: Chave PIX
         bank_code: Código do Banco
         bank_agency: Agencia
         bank_account: Conta Corrente
-        description: Descrição do Método de Pagamento
+        payment: Modelo de Pagamento

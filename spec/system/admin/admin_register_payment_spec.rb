@@ -8,7 +8,7 @@ describe 'Admin register payment' do
             click_on 'Adicionar'
 
             fill_in 'Descrição do Método de Pagamento', with: 'Pix Roxinho'
-            select('PIX', from: 'Tipo de Pagamento')
+            select 'PIX', from: 'Tipo de Pagamento'
             fill_in 'Taxa', with: '3.5'
             fill_in 'Taxa Máxima em Reais', with: '13.50'
             click_on 'Criar Modelo de Pagamento'

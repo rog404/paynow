@@ -1,36 +1,17 @@
 <%= form_with model: [:company ,payment_method], class: 'row g-3' do |f| %>
     <div class="col-md-12">
-        <%= f.label :description, class: 'form-label' %>
-        <%= f.text_field :description, class: 'form-control' %>
-        <% payment_method.errors[:description].each do |error| %>
+        <%= f.label :payment, class: 'form-label' %>
+        <%= f.collection_select :payment, payments, :id, :display_name ,{}, {:class => 'form-select'}%>
+        <% payment_method.errors[:payment].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
-    <div class="col-6">
-        <%= f.label :fee, class: 'form-label' %>
-        <div class="input-group mb-3">
-            <%= f.text_field :fee, class: 'form-control', placeholder: '3,6' %>
-            <span class="input-group-text">%</span>
-        </div>
-        <% payment_method.errors[:fee].each do |error| %>
+    <div class="col-md-12">
+        <%= f.label :code, class: 'form-label' %>
+        <%= f.text_field :code, class: 'form-control' %>
+        <% payment_method.errors[:key].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
-    </div>
-    <div class="col-6">
-        <%= f.label :max_money_fee, class: 'form-label' %>
-        <div class="input-group mb-3">
-            <span class="input-group-text">R$</span>
-            <%= f.text_field :max_money_fee, class: 'form-control', placeholder: '12,00' %>
-        </div>
-        <% payment_method.errors[:max_money_fee].each do |error| %>
-            <div class="alert alert-danger"><%= error %></div>
-        <% end %>
-    </div>
-    <div class="form-check">
-       <%= f.check_box :state, {id: 'check', class: 'form-check-input'}, "active", "disabled" %>
-        <label class="form-check-label mx-1">
-            Ativo
-        </label>
     </div>
     <%= f.submit button_text, class: 'btn btn-primary' %>
 <% end %>

@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
     before_action :set_method, only: %i[show]
 
     def index
-        @companies = Company.all
+        @companies = Company.order(state: :desc)
     end 
    
     def show

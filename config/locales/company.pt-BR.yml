@@ -15,6 +15,7 @@ pt-BR:
       config: Configurar
       fee: Taxa
       max_money_fee: Taxa Máxima em Reais
+      token: Token de Pagamento
       empty: Não existe métodos de pagamentos cadastrados
     create:
       success: Empresa adicionada com sucesso

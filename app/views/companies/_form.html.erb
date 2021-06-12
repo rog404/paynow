@@ -8,21 +8,21 @@
     </div>
     <div class="col-md-6">
         <%= f.label :cnpj, class: 'form-label' %>
-        <%= f.text_field :cnpj, class: 'form-control' %>
+        <%= f.text_field :cnpj, class: 'form-control', placeholder: '63838257000137' %>
         <% company.errors[:cnpj].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
     <div class="col-md-6">
         <%= f.label :email, class: 'form-label' %>
-        <%= f.text_field :email, class: 'form-control' %>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'emailfaturamento@empresa.com.br' %>
         <% company.errors[:email].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
     <div class="col-12">
         <%= f.label :address, class: 'form-label' %>
-        <%= f.text_field :address, class: 'form-control', placeholder: 'Rua maurício, 245, São Paulo - SP' %>
+        <%= f.text_field :address, class: 'form-control', placeholder: 'R. Maurício Frandangos, 245. Jardins, São Paulo - SP' %>
         <% company.errors[:address].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
