@@ -1,8 +1,19 @@
-<%= form_with model: [:company ,payment_method], class: 'row g-3' do |f| %>
-    <div class="col-md-12">
+<%= link_to t('.back'), payments_path, class: 'btn btn-dark my-3' %>
+<h1><%= t '.title' %></h1>
+<%= form_with model: [@payment], class: 'row g-3' do |f| %>
+    <div class="col-md-6">
         <%= f.label :description, class: 'form-label' %>
         <%= f.text_field :description, class: 'form-control' %>
-        <% payment_method.errors[:description].each do |error| %>
+        <% @payment.errors[:description].each do |error| %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% end %>
+    </div>
+    <div class="col-6">
+        <%= f.label :payment_type, class: 'form-label' %>
+        <div class="input-group mb-3">
+            <%= f.select :payment_type, Payment.payment_types.keys.map {|type| [Payment.human_attribute_name("payment_type.#{type}"),type]}, {}, {:class => 'form-select'}%>
+        </div>
+        <% @payment.errors[:payment_type].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
@@ -12,7 +23,7 @@
             <%= f.text_field :fee, class: 'form-control', placeholder: '3,6' %>
             <span class="input-group-text">%</span>
         </div>
-        <% payment_method.errors[:fee].each do |error| %>
+        <% @payment.errors[:fee].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
@@ -22,7 +33,7 @@
             <span class="input-group-text">R$</span>
             <%= f.text_field :max_money_fee, class: 'form-control', placeholder: '12,00' %>
         </div>
-        <% payment_method.errors[:max_money_fee].each do |error| %>
+        <% @payment.errors[:max_money_fee].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
@@ -32,5 +43,6 @@
             Ativo
         </label>
     </div>
-    <%= f.submit button_text, class: 'btn btn-primary' %>
+    <%= f.submit class: 'btn btn-primary' %>
+</select>
 <% end %>

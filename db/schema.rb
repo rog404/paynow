@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_215704) do
+ActiveRecord::Schema.define(version: 2021_06_11_200437) do
 
   create_table "boleto_companions", force: :cascade do |t|
     t.string "bank_code"
@@ -41,12 +41,22 @@ ActiveRecord::Schema.define(version: 2021_06_08_215704) do
 
   create_table "payment_methods", force: :cascade do |t|
     t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "payment_id", null: false
+    t.integer "company_id", null: false
+    t.index ["company_id"], name: "index_payment_methods_on_company_id"
+    t.index ["payment_id"], name: "index_payment_methods_on_payment_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "payment_type"
+    t.string "description"
     t.decimal "fee"
     t.decimal "max_money_fee"
     t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "description"
   end
 
   create_table "pix_companions", force: :cascade do |t|
@@ -57,4 +67,6 @@ ActiveRecord::Schema.define(version: 2021_06_08_215704) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "payment_methods", "companies"
+  add_foreign_key "payment_methods", "payments"
 end

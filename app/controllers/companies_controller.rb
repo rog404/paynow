@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
     before_action :set_company, only: %i[show edit update retoken]
+    before_action :set_method, only: %i[show]
 
     def index
         @companies = Company.all
@@ -25,8 +26,11 @@ class CompaniesController < ApplicationController
     end
 
     def update
-        @company.update(company_params)
-        redirect_to @company, notice: t('.success')
+        if @company.update(company_params)
+            redirect_to @company, notice: t('.success')
+        else
+            render :new
+        end
     end
 
     def retoken
@@ -43,7 +47,13 @@ class CompaniesController < ApplicationController
         @company = Company.find params[:id]
     end
 
+    def set_method
+        @payment_methods = PaymentMethod.where(company: @company).sort_by{ |method| method.payment.state}
+    end
+
     def company_params
         params.require(:company).permit(:cnpj, :name, :email, :address, :state)
     end
+
+    
 end

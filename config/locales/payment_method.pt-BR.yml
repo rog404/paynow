@@ -2,11 +2,12 @@
 pt-BR:
   payment_methods:
     index:
-      empty: Nenhuma método de pagamento cadastrado
+      empty: Nenhum método de pagamento cadastrado
       title: Métodos de Pagamento
       fee: Taxa
       max_money_fee: Taxa Máxima em Reais
       edit: Editar
+      add: Adicionar
     new:
       pix_title: Adicionar o método Pix
       credit_card_title: Adicionar o método de Cartão de Crédito
@@ -18,7 +19,7 @@ pt-BR:
     create:
       success: Método adicionado com sucesso
     edit:
-      title: Editar uma empresa
+      title: Editar um método de pagamento
       back: Voltar
     update:
       success: Método atualizado com sucesso
@@ -26,9 +27,10 @@ pt-BR:
     models:
       payment_method: Método de Pagamento
     attributes:
-      payment_method/state:
-        active: Ativo
-        disabled: Desativado
+      payment_method/type:
+        CreditCard: Cartão de Crédito
+        Boleto: Boleto
+        Pix: PIX
       payment_method:
         fee: Taxa
         max_money_fee: Taxa Máxima em Reais

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :payment_methods, only: %i[index]
+  resources :payments, only: %i[index new create edit create update]
 
   resources :companies, only: %i[index show new create edit update] do
     resources :payment_methods, only: %i[index show new create edit update] do

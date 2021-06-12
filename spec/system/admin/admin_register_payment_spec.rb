@@ -3,60 +3,87 @@ require 'rails_helper'
 describe 'Admin register payment' do
     context 'as PIX' do
         it 'as successfully' do
-            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
-                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
-            
             visit root_path
-            click_on 'Empresas'
-            click_on 'Codeplay cursos online LTDA'
-            click_on 'Métodos de Pagamento'
-            click_on 'Adicionar novo método'
-            click_on 'PIX'
+            click_on 'Modelos de Pagamento'
+            click_on 'Adicionar'
 
-            fill_in 'Código do Banco', with: '101'
-            fill_in 'Código PIX', with: '01234567890123456789'
-            click_on 'Cadastrar novo método'
+            fill_in 'Descrição do Método de Pagamento', with: 'Pix Roxinho'
+            select('PIX', from: 'Tipo de Pagamento')
+            fill_in 'Taxa', with: '3.5'
+            fill_in 'Taxa Máxima em Reais', with: '13.50'
+            click_on 'Criar Modelo de Pagamento'
 
-            expect(page).to have_content('101')
-            expect(page).to have_content('01234567890123456789')
+            expect(page).to have_content('Modelo adicionado com sucesso')
+            expect(page).to have_content('PIX')
+            expect(page).to have_content('Pix Roxinho')
+            expect(page).to have_content('3,5')
+            expect(page).to have_content('13,50')
             
         end
 
         it 'and cannot be blank' do
-            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
-                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
-
+        
             visit root_path
-            click_on 'Empresas'
-            click_on 'Codeplay cursos online LTDA'
-            click_on 'Métodos de Pagamento'
-            click_on 'Adicionar novo método'
-            click_on 'PIX'
+            click_on 'Modelos de Pagamento'
+            click_on 'Adicionar'
+            click_on 'Criar Modelo de Pagamento'
 
-            click_on 'Cadastrar novo método'
-
-            expect(page).to have_content('é obrigatorio(a)')
+            expect(page).to have_content('não pode ficar em branco')
             
+        end
+
+        it 'and fee and max money fee must be numerical' do
+            visit root_path
+            click_on 'Modelos de Pagamento'
+            click_on 'Adicionar'
+
+            fill_in 'Descrição do Método de Pagamento', with: 'Pix Roxinho'
+            select('PIX', from: 'Tipo de Pagamento')
+            fill_in 'Taxa', with: 'dasdsa'
+            fill_in 'Taxa Máxima em Reais', with: 'sadas'
+            click_on 'Criar Modelo de Pagamento'
+
+            expect(page).to have_content('não é um número')
         end
     end
 
-    xcontext 'as Credit Card' do
+    context 'as Credit Card' do
         it 'as successfully' do
-        
-        end
+            visit root_path
+            click_on 'Modelos de Pagamento'
+            click_on 'Adicionar'
 
-        it 'and cannot be blank' do
-            
+            fill_in 'Descrição do Método de Pagamento', with: 'Cartão Roxinho'
+            select('Cartão de Crédito', from: 'Tipo de Pagamento')
+            fill_in 'Taxa', with: '3.5'
+            fill_in 'Taxa Máxima em Reais', with: '13.50'
+            click_on 'Criar Modelo de Pagamento'
+
+            expect(page).to have_content('Modelo adicionado com sucesso')
+            expect(page).to have_content('Cartão de Crédito')
+            expect(page).to have_content('Cartão Roxinho')
+            expect(page).to have_content('3,5')
+            expect(page).to have_content('13,50')
         end
     end
 
-    xcontext 'as Boleto' do
+    context 'as Boleto' do
         it 'as successfully' do
-        
-        end
+            visit root_path
+            click_on 'Modelos de Pagamento'
+            click_on 'Adicionar'
 
-        it 'and cannot be blank' do
-            
+            fill_in 'Descrição do Método de Pagamento', with: 'Boleto Roxinho'
+            select('Boleto', from: 'Tipo de Pagamento')
+            fill_in 'Taxa', with: '3.5'
+            fill_in 'Taxa Máxima em Reais', with: '13.50'
+            click_on 'Criar Modelo de Pagamento'
+
+            expect(page).to have_content('Modelo adicionado com sucesso')
+            expect(page).to have_content('Boleto')
+            expect(page).to have_content('Boleto Roxinho')
+            expect(page).to have_content('3,5')
+            expect(page).to have_content('13,50')
         end
     end
 end

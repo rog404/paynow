@@ -1,0 +1,37 @@
+---
+pt-BR:
+  payments:
+    index:
+      empty: Nenhum modelo de pagamento cadastrado
+      title: Modelos de Pagamento
+      fee: Taxa
+      max_money_fee: Taxa Máxima em Reais
+      config: Configurar
+    new:
+      title: Adicionar um novo Modelo de Pagamento
+      back: Voltar
+      save: Salvar Modelo
+
+    create:
+      success: Modelo adicionado com sucesso
+    edit:
+      title: Editar uma modelo de pagamento
+      back: Voltar
+    update:
+      success: Modelo atualizado com sucesso
+  activerecord:
+    models:
+      payment: Modelo de Pagamento
+    attributes:
+      payment/state:
+        active: Ativo
+        disabled: Desativado
+      payment/payment_type:
+        pix: PIX
+        card: Cartão de Crédito
+        boleto: Boleto
+      payment:
+        fee: Taxa
+        max_money_fee: Taxa Máxima em Reais
+        description: Descrição do Método de Pagamento
+        payment_type: Tipo de Pagamento
