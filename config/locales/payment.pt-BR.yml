@@ -28,7 +28,7 @@ pt-BR:
         disabled: Desativado
       payment/payment_type:
         pix: PIX
-        card: Cartão de Crédito
+        credit_card: Cartão de Crédito
         boleto: Boleto
       payment:
         fee: Taxa

@@ -1,4 +1,7 @@
 class Company < ApplicationRecord
+    has_many :payment_methods
+    has_many :products
+
     validates :name, :cnpj, :email, :address, presence: true
     validates :cnpj, :token, uniqueness: true
 

@@ -17,6 +17,7 @@ pt-BR:
       max_money_fee: Taxa Máxima em Reais
       token: Token de Pagamento
       empty: Não existe métodos de pagamentos cadastrados
+      products: Produtos
     create:
       success: Empresa adicionada com sucesso
     edit:

@@ -3,7 +3,7 @@ class Payment < ApplicationRecord
     validates :max_money_fee, :fee, presence: true, numericality: {greater_than_or_equal_to: 0}
 
     enum state: [:disabled, :active]
-    enum payment_type: [:pix, :boleto, :card]
+    enum payment_type: [:pix, :boleto, :credit_card]
 
     before_save :default_values 
     

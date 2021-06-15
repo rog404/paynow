@@ -50,7 +50,7 @@ class PaymentMethodsController < ApplicationController
     end
 
     def new_boleto
-        Boleto.new(company: @company, payment: @payment, bank_agency: params[:payment_method][:bank_agency], bank_account: params[:payment_method][:bank_acount], bank_code: params[:payment_method][:bank_code])
+        Boleto.new(company: @company, payment: @payment, bank_agency: params[:payment_method][:bank_agency], bank_account: params[:payment_method][:bank_account], bank_code: params[:payment_method][:bank_code])
     end
 
     def new_credit_card

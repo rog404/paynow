@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_12_174241) do
+ActiveRecord::Schema.define(version: 2021_06_15_011948) do
 
   create_table "boleto_companions", force: :cascade do |t|
     t.string "bank_code"
@@ -68,6 +68,20 @@ ActiveRecord::Schema.define(version: 2021_06_12_174241) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "token"
+    t.string "name"
+    t.decimal "price"
+    t.decimal "discount_pix"
+    t.decimal "discount_boleto"
+    t.decimal "discount_credit_card"
+    t.integer "company_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_products_on_company_id"
+  end
+
   add_foreign_key "payment_methods", "companies"
   add_foreign_key "payment_methods", "payments"
+  add_foreign_key "products", "companies"
 end

@@ -20,7 +20,7 @@
             <div class="alert alert-danger"><%= error %></div>
         <% end %>
     </div>
-       <div class="col-md-4">
+    <div class="col-md-4">
         <%= f.label :bank_account, class: 'form-label' %>
         <%= f.text_field :bank_account, class: 'form-control' %>
         <% payment_method.errors[:bank_account].each do |error| %>
