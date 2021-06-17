@@ -42,6 +42,19 @@ describe 'Admin registers company' do
     
         expect(page).to have_content('já está em uso')
     end
+    it 'email must be valid' do
+        visit root_path
+        click_on 'Empresas'
+        click_on 'Adicionar'
+        fill_in 'CNPJ', with: '87470788000130'
+        fill_in 'Razão Social', with: 'Udemy cursos'
+        fill_in 'Email', with: 'faturamentom'
+        fill_in 'Endereço', with: 'R. Salvador Dali, 2452, Palma - TO'
+        check 'check'
+        click_on 'Criar Empresa'
+
+        expect(page).to have_content('não é válido')
+    end
 
     xit 'must be looged in to create company' do
         visit new_admin_course_path

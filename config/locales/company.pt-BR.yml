@@ -18,6 +18,7 @@ pt-BR:
       token: Token de Pagamento
       empty: Não existe métodos de pagamentos cadastrados
       products: Produtos
+      clients: Clientes
     create:
       success: Empresa adicionada com sucesso
     edit:

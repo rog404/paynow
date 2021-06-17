@@ -21,5 +21,13 @@ describe Company do
 
       expect(company.errors[:cnpj]).to include('já está em uso')
     end
+    
+    it 'email must be valid' do
+      company = Company.new(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA', email: 'faturamodepla.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+
+      company.valid?
+
+      expect(company.errors[:email]).to include('não é válido')
+    end
   end
 end

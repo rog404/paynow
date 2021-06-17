@@ -1,0 +1,41 @@
+---
+pt-BR:
+  products:
+    index:
+      empty: Nenhum produto cadastrado
+      title: Produtos
+      config: Configurar
+      back: Voltar
+      price: Preço
+      token: Token
+      new_product: Novo Produto
+    show:
+      back: Voltar
+      edit: Editar
+      price: Preço
+      token: Token
+      discount_pix: Desconto para pagamentos em PIX
+      discount_boleto: Desconto para pagamentos em Boleto
+      discount_credit_card: Desconto para pagamentos em Cartão de Crédito
+    new:
+      title: Adicionar um novo Produto
+      back: Voltar
+      save: Salvar Produto
+    create:
+      success: Produto criado com sucesso
+    edit:
+      title: Editar um produto
+      back: Voltar
+    update:
+      success: Produto atualizado com sucesso
+  activerecord:
+    models:
+      product: Produto
+    attributes:
+      product:
+        token: Token
+        name: Nome
+        price: Preço
+        discount_pix: Desconto para PIX
+        discount_boleto: Desconto para Boleto
+        discount_credit_card: Desconto para Cartão

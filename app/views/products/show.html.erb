@@ -1,0 +1,46 @@
+<div class='row justify-content-between'>
+    <div class='col-2'><%= link_to t('.back'), company_products_path, class: 'btn btn-dark my-3' %></div>
+    <div class='col-2'>
+        <%= link_to edit_company_product_path do %>
+            <div class= "btn btn-dark my-3">
+                <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+                </svg>
+                <%= t '.edit' %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<h1><%= @product.name %></h1>
+<ul class="list-group my-3">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto row">
+                <div class="fw-bold"><%= t '.price' %></div>
+                <div><%= number_to_currency @product.price %></div>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto row">
+                <div class="fw-bold"><%= t '.discount_pix' %></div>
+                <div><%= number_to_percentage @product.discount_pix, :precision => 2 %></div>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto row">
+                <div class="fw-bold"><%= t '.discount_boleto' %></div>
+                <div><%= number_to_percentage @product.discount_boleto, :precision => 2 %></div>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto row">
+                <div class="fw-bold"><%= t '.discount_credit_card' %></div>
+                <div><%= number_to_percentage @product.discount_credit_card, :precision => 2 %></div>
+            </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto row">
+                <div class="fw-bold"><%= t '.token' %></div>
+                <div><%= @product.token %></div>
+            </div>
+        </li>
+</ul>

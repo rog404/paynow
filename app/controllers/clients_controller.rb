@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ClientsController < ApplicationController
     before_action :set_company, only: %i[index show create]
     before_action :set_product, only: %i[show]
 

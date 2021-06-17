@@ -1,0 +1,30 @@
+---
+pt-BR:
+  clients:
+    index:
+      empty: Nenhum cliente cadastrado
+      title: Clientes
+      config: Configurar
+      back: Voltar
+      token: Token
+      name: Nome
+      cpf: CPF
+    new:
+      title: Adicionar um novo Client
+      back: Voltar
+      save: Salvar Cliente
+    create:
+      success: Cliente criado com sucesso
+    edit:
+      title: Editar um cliente
+      back: Voltar
+    update:
+      success: Cliente atualizado com sucesso
+  activerecord:
+    models:
+      client: Cliente
+    attributes:
+      client:
+        token: Token
+        name: Nome
+        cpf: CPF

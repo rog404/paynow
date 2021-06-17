@@ -1,15 +1,15 @@
 <div class='row justify-content-between'>
-<div class='col-2'><%= link_to t('.back'), companies_path, class: 'btn btn-dark my-3' %></div>
-<div class='col-2'>
-    <%= link_to edit_company_path do %>
-        <div class= "btn btn-dark my-3">
-            <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-            </svg>
-            <%= t '.edit' %>
-        </div>
-    <% end %>
-</div>
+    <div class='col-2'><%= link_to t('.back'), companies_path, class: 'btn btn-dark my-3' %></div>
+    <div class='col-2'>
+        <%= link_to edit_company_path do %>
+            <div class= "btn btn-dark my-3">
+                <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                    <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+                </svg>
+                <%= t '.edit' %>
+            </div>
+        <% end %>
+    </div>
 </div>
 <h1><%= @company.name %><span class="badge mx-4 <%= @company.active? ? 'bg-success' : 'bg-dark' %>"><%= Company.human_attribute_name "state.#{@company.state}" %></span></h1>
 
@@ -45,14 +45,27 @@
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto row">
-            <%= link_to company_products_path(@company) do %>
-                <div class= "btn btn-dark my-3">
-                    <svg id="i-folder-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                        <path d="M4 28 L28 28 30 12 14 12 10 8 2 8 Z M28 12 L28 4 4 4 4 8" />
-                    </svg>
-                    <%= t '.products' %>
+                <div class="col px-2">
+                    <%= link_to company_products_path(@company) do %>
+                        <div class= "btn btn-dark my-3">
+                            <svg id="i-folder-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M4 28 L28 28 30 12 14 12 10 8 2 8 Z M28 12 L28 4 4 4 4 8" />
+                            </svg>
+                            <%= t '.products' %>
+                        </div>
+                    <% end %>
                 </div>
-            <% end %>
+                <div class="col px-2">
+                    <%= link_to company_products_path(@company) do %>
+                        <div class= "btn btn-dark my-3">
+                            <svg id="i-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                <path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+                            </svg>
+                            <%= t '.clients' %>
+                        </div>
+                    <% end %>
+                </div>
+
             </div>
         </li>
 </ul>

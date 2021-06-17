@@ -10,13 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_011948) do
+ActiveRecord::Schema.define(version: 2021_06_17_204454) do
 
   create_table "boleto_companions", force: :cascade do |t|
     t.string "bank_code"
     t.string "bank_agency"
     t.string "bank_account"
     t.integer "boleto_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "token"
+    t.string "name"
+    t.string "cpf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -30,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_06_15_011948) do
     t.integer "state"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "company_clients", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_company_clients_on_client_id"
+    t.index ["company_id"], name: "index_company_clients_on_company_id"
   end
 
   create_table "credit_card_companions", force: :cascade do |t|
@@ -48,6 +65,19 @@ ActiveRecord::Schema.define(version: 2021_06_15_011948) do
     t.string "token"
     t.index ["company_id"], name: "index_payment_methods_on_company_id"
     t.index ["payment_id"], name: "index_payment_methods_on_payment_id"
+  end
+
+  create_table "payment_orders", force: :cascade do |t|
+    t.string "token"
+    t.string "company_token"
+    t.string "payment_method_token"
+    t.string "product_token"
+    t.string "client_token"
+    t.decimal "value"
+    t.decimal "discount_value"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "payments", force: :cascade do |t|
@@ -81,6 +111,8 @@ ActiveRecord::Schema.define(version: 2021_06_15_011948) do
     t.index ["company_id"], name: "index_products_on_company_id"
   end
 
+  add_foreign_key "company_clients", "clients"
+  add_foreign_key "company_clients", "companies"
   add_foreign_key "payment_methods", "companies"
   add_foreign_key "payment_methods", "payments"
   add_foreign_key "products", "companies"
