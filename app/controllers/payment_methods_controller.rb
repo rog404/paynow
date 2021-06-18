@@ -12,8 +12,8 @@ class PaymentMethodsController < ApplicationController
 
     def new
         @type = params[:type]
-        @payments = Payment.where(state: :active, payment_type: @type)
         @payment_method = PaymentMethod.new
+        @payments = Payment.where(state: :active, payment_type: @type)
     end
 
     def create
@@ -28,7 +28,7 @@ class PaymentMethodsController < ApplicationController
         if @payment_method.save
             redirect_to @company, notice: t('.success')
         else
-            render :new
+            redirect_to new_company_payment_method_path(@company, type: @payment_type), alert: @payment_method.errors.full_messages.join(',').gsub(',', "\n")
         end
     end
 

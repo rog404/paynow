@@ -23,6 +23,21 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('PIX')
             expect(page).to have_content('7,90')
         end
+        it 'and cannot be blank' do
+            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
+                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+            payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :pix)
+            Payment.create!(description: 'PIX Promoção', fee: 0.2, max_money_fee: 5.90, payment_type: :pix)
+            Payment.create!(description: 'PIX Desativo', fee: 1.7, max_money_fee: 17.90, payment_type: :pix, state: :disabled)
+
+            visit root_path
+            click_on 'Empresas'
+            click_on 'Codeplay cursos online LTDA'
+            click_on 'Adicionar'
+            click_on 'PIX'
+            click_on 'Adicionar PIX'
+            expect(page).to have_content('não pode ficar em branco', count: 2)
+        end
     end
     context 'as Boleto' do
         it 'successfully' do
@@ -47,6 +62,21 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('Boleto')
             expect(page).to have_content('7,90')
         end
+        it 'and cannot be blank' do
+            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
+                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+            payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :boleto)
+            Payment.create!(description: 'PIX Promoção', fee: 0.2, max_money_fee: 5.90, payment_type: :boleto)
+            Payment.create!(description: 'PIX Desativo', fee: 1.7, max_money_fee: 17.90, payment_type: :boleto, state: :disabled)
+
+            visit root_path
+            click_on 'Empresas'
+            click_on 'Codeplay cursos online LTDA'
+            click_on 'Adicionar'
+            click_on 'Boleto'
+            click_on 'Adicionar Boleto'
+            expect(page).to have_content('não pode ficar em branco', count: 3)
+        end
     end
     context 'as Credit Card' do
         it 'successfully' do
@@ -68,6 +98,21 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('Método adicionado com sucesso')
             expect(page).to have_content('Cartão de Crédito')
             expect(page).to have_content('7,90')
+        end
+        it 'and cannot be blank' do
+            Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
+                            email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+            payment = Payment.create!(description: 'Cartão', fee: 0.7, max_money_fee: 7.90, payment_type: :credit_card)
+            Payment.create!(description: 'Cartão 2', fee: 0.2, max_money_fee: 5.90, payment_type: :credit_card)
+            Payment.create!(description: 'Cartão Desativo', fee: 1.7, max_money_fee: 17.90, payment_type: :credit_card, state: :disabled)
+
+            visit root_path
+            click_on 'Empresas'
+            click_on 'Codeplay cursos online LTDA'
+            click_on 'Adicionar'
+            click_on 'Cartão de Crédito'
+            click_on 'Adicionar Cartão'
+            expect(page).to have_content('não pode ficar em branco')
         end
     end  
 end

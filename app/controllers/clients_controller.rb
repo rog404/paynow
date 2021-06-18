@@ -1,16 +1,13 @@
 class ClientsController < ApplicationController
     before_action :set_company, only: %i[index show create]
-    before_action :set_product, only: %i[show]
+    before_action :set_client, only: %i[show]
 
     def index
-        @products = @company.products
-    end
-
-    def show
+        @clients = @company.clients
     end
 
     def new
-        @product = Product.new
+        @client = Client.new
     end
 
     def create
@@ -27,11 +24,11 @@ class ClientsController < ApplicationController
         @company = Company.find params[:company_id]
     end
 
-    def set_product
+    def set_client
         @product = @company.products.find params[:id]        
     end
 
-    def product_params
-        params.require(:product).permit(:name, :price, :discount_pix, :discount_boleto, :discount_credit_card)
+    def client_params
+        params.require(:client).permit(:name, :cpf)
     end
 end
