@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin view payment' do
-    it 'as successfully' do
+    it 'successfully' do
         Payment.create!(description: 'Pix Verde', payment_type: 'pix', fee: 3.5, max_money_fee: 13.50)
             visit root_path
             click_on 'Modelos de Pagamento'

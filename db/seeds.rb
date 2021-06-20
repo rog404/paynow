@@ -1,15 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-Payment.create(description: 'Pix :D', fee: 0.2, max_money_fee: 5, payment_type: :pix)
-Payment.create(description: 'Boleto do Roxinho', fee: 1.2, max_money_fee: 7, payment_type: :boleto)
-Payment.create(description: 'Cartão do Laranjinha', fee: 3.2, max_money_fee: 12, payment_type: :card)
+pix_payment = Payment.create!(description: 'Pix :D', fee: 0.2, max_money_fee: 5, payment_type: :pix)
+pix_payment_disabled = Payment.create!(description: 'Pix Desativado', fee: 0.2, max_money_fee: 5, payment_type: :pix, state: :disabled)
+boleto_payment = Payment.create!(description: 'Boleto do Roxinho', fee: 1.2, max_money_fee: 7, payment_type: :boleto)
+Payment.create!(description: 'Boleto Desativado', fee: 1.2, max_money_fee: 7, payment_type: :boleto, :disabled)
+credit_card_payment = Payment.create!(description: 'Cartão do Laranjinha', fee: 3.2, max_money_fee: 12, payment_type: :card)
+Payment.create!(description: 'Cartão Desativado', fee: 3.2, max_money_fee: 12, payment_type: :card, :disabled)
 
-company = Company.create(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA', email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+company = Company.create!(cnpj: '28348439000129', name: 'CAMPUS CODE SERVICOS E CONSULTORIA DE INFORMATICA LTDA', email: 'contato@campuscode.com.br', address: 'Alameda Santos, 1293. Jardim paulista, São Paulo - SP')
+company2 = Company.create!(cnpj: '29030862000149', name: 'UDEMY, INC', email: 'bizdev@udemy.com', address: 'Rua Capitão Antonio Rosa, 409. Vila Madalena, São Paulo - SP')
 
-Pix.create(payment: Payment.first, key: '12hjk12312j3h', bank_code: '132', company: company)
-CreditCard.create(payment: Payment.find(3), code: '12321312')
+method_pix = Pix.create!(payment: pix_payment, key: '12hjk12312j3h', bank_code: '132', company: company)
+Pix.create!(payment: pix_payment_disabled, key: '12hjk12j3213h', bank_code: '103', company: company)
+method_boleto = Boleto.create!(payment: boleto_payment, bank_code: '132', bank_agency: '31081', bank_account: '554352', company: company)
+CreditCard.create!(payment: credit_card_payment, code: '12321312', company: company)
+Boleto.create!(payment: boleto_payment, bank_code: '102', bank_agency: '3131', bank_account: '4215', company: company2)
+
+client = Client.create!(name: 'Rogerio Bordignon', cpf: '01770967214')

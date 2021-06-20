@@ -1,0 +1,26 @@
+<h1><%= t '.title' %></h1>
+<% if @users.empty? %>
+    <div class="alert alert-dark" role="alert">
+        <%= t '.empty' %>
+    </div>
+<% end %>
+<ul class="list-group">
+    <% @users.each do |user| %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="row row-cols-lg-5 gx-1 container justify-content-center">
+                    <div class="col-3 text-center align-self-center">
+                        <div class="fw-bold"><%= t '.name' %></div>
+                        <div class="card-text"><%= user.name %></div>
+                    </div> 
+                    <div class="col-3 text-center align-self-center">
+                        <div class="fw-bold"><%= t '.email' %></div>
+                        <div class="card-text"><%= user.email %></div>
+                    </div>
+                    <div class="col-3 text-center align-self-center">
+                        <div class="fw-bold"><%= t '.role' %></div>
+                        <div class="card-text"><%= User.human_attribute_name "role.#{user.role}" %></div>
+                    </div>
+                </div>
+        </li>
+    <% end %>
+</ul>

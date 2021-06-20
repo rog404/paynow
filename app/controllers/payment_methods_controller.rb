@@ -1,6 +1,6 @@
 class PaymentMethodsController < ApplicationController
-    before_action :set_payment_method, only: %i[show edit update]
-    before_action :set_company, only: %i[method_chosen new create]
+    before_action :set_payment_method, only: %i[edit update]
+    before_action :set_company, only: %i[method_chosen new create edit update]
     before_action :set_payment, only: %i[create]
 
     def method_chosen
@@ -34,7 +34,7 @@ class PaymentMethodsController < ApplicationController
 
     private
     def set_payment_method
-        @payment_methods = PaymentMethod.find params[:id]
+        @payment_method = PaymentMethod.find params[:payment_method_id]
     end
 
     def set_company

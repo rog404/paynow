@@ -1,0 +1,18 @@
+---
+pt-BR:
+  payment_orders:
+    index:
+      empty: Nenhum pagamento pendente
+      title: Pagamentos Pendentes
+      product: Nome do Produto
+      final_value: Valor
+      approved: Aprovar
+  activerecord:
+    models:
+      payment_order: Pagamentos
+    attributes:
+      payment_order/status:
+        pending: Pendente
+        approved: Aprovado
+      payment_order:
+        discount_value: Preço final 

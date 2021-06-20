@@ -19,8 +19,11 @@ pt-BR:
     create:
       success: Método adicionado com sucesso
     edit:
-      title: Editar um método de pagamento
+      title: Editar um Método de Pagamento
       back: Voltar
+      edit_pix: Editar PIX
+      edit_credit_card: Editar Cartão de Crédito
+      edit_boleto: Editar Boleto
     update:
       success: Método atualizado com sucesso
   activerecord:

@@ -1,0 +1,46 @@
+<h2>Login</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="col-md-6">
+        <%= f.label :email, class: 'form-label' %>
+        <div class="input-group mb-3">
+            <span class="input-group-text">
+              <svg id="i-mail" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M2 26 L30 26 30 6 2 6 Z M2 6 L16 16 30 6" />
+              </svg>
+            </span>
+        <%= f.text_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
+        </div>
+        <% resource.errors[:email].each do |error| %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% end %>
+  </div>
+  <div class="col-md-6">
+        <%= f.label :password, class: 'form-label' %>
+        <div class="input-group mb-3">
+            <span class="input-group-text">
+              <svg id="i-lock" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                  <path d="M5 15 L5 30 27 30 27 15 Z M9 15 C9 9 9 5 16 5 23 5 23 9 23 15 M16 20 L16 23" />
+                  <circle cx="16" cy="24" r="1" />
+              </svg>
+            </span>
+            <%= f.password_field :password, class: 'form-control', autofocus: true%>
+        </div>         
+        <% resource.errors[:password].each do |error| %>
+            <div class="alert alert-danger"><%= error %></div>
+        <% end %>
+    </div>
+
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "Entrar", class: 'btn btn-dark' %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

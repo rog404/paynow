@@ -1,0 +1,32 @@
+---
+pt-BR:
+  users:
+    index:
+      title: Usuários do Sistema
+      name: Nome
+      email: Email
+      role: Cargo
+      empty: Não há usuários registrados no sistema
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        name: Nome
+      user/role:
+        admin: Administrador
+        owner: Dono da Empresa
+        employeer: Empregado
+  devise:
+    registrations:
+      new:
+        title: Registrar
+        submit: Criar Conta
+    shared:
+      links:
+        log_in: Entrar
+        sign_up: Registrar

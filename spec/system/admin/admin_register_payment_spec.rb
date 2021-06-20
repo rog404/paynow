@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin register payment' do
     context 'as PIX' do
-        it 'as successfully' do
+        it 'successfully' do
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -48,7 +48,7 @@ describe 'Admin register payment' do
     end
 
     context 'as Credit Card' do
-        it 'as successfully' do
+        it 'successfully' do
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -68,7 +68,7 @@ describe 'Admin register payment' do
     end
 
     context 'as Boleto' do
-        it 'as successfully' do
+        it 'successfully' do
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'

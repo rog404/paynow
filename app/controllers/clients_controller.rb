@@ -11,12 +11,6 @@ class ClientsController < ApplicationController
     end
 
     def create
-        @product = @company.products.new product_params
-        if @product.save
-            redirect_to company_products_path(@company), notice: t('.success')
-        else
-            render :new
-        end
     end
 
     private
@@ -25,7 +19,7 @@ class ClientsController < ApplicationController
     end
 
     def set_client
-        @product = @company.products.find params[:id]        
+        @client = Client.find params[:id]        
     end
 
     def client_params

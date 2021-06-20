@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Admin edit payment' do
-        it 'as successfully' do
+        it 'successfully' do
 
             Payment.create(description: 'Roxinho', fee: 2.2, max_money_fee: 10.0, payment_type: :pix)
             

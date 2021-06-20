@@ -14,7 +14,7 @@ class PaymentMethod < ApplicationRecord
     def generate_token
         loop do
             token = SecureRandom.base58(20)
-            break token unless Company.where(token: token).exists?
+            break token unless PaymentMethod.where(token: token).exists?
         end
     end
 end

@@ -13,6 +13,10 @@ class Company < ApplicationRecord
 
     before_save :default_values
     
+    def domain
+        self.email.split('@')[1]
+    end
+
     private
     def default_values
         self.state ||= :active
