@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Admin view payment' do
     it 'successfully' do
+        admin_login
         Payment.create!(description: 'Pix Verde', payment_type: 'pix', fee: 3.5, max_money_fee: 13.50)
             visit root_path
             click_on 'Modelos de Pagamento'
@@ -10,5 +11,9 @@ describe 'Admin view payment' do
             expect(page).to have_content('Pix Verde')
             expect(page).to have_content('3,5')
             expect(page).to have_content('13,50')
+    end
+
+    it 'and only admin can see' do
+        
     end
 end

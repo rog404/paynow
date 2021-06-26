@@ -1,5 +1,6 @@
-class PaymentsController < ApplicationController
+class PaymentsController < AutenticationController
     before_action :set_payment, only: %i[show edit update]
+    before_action :user_admin, only: %i[index, new, create, edit, update]
 
     def index
         @payments = Payment.order(state: :desc)

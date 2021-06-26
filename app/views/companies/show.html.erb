@@ -1,13 +1,15 @@
 <div class='row justify-content-between'>
     <div class='col-2'><%= link_to t('.back'), companies_path, class: 'btn btn-dark my-3' %></div>
     <div class='col-2'>
-        <%= link_to edit_company_path do %>
-            <div class= "btn btn-dark my-3">
-                <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                    <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-                </svg>
-                <%= t '.edit' %>
-            </div>
+        <% if current_user && current_user.role == 'admin' || current_user.role == 'owner' %>
+            <%= link_to edit_company_path do %>
+                <div class= "btn btn-dark my-3">
+                    <svg id="i-edit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="20" height="20" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
+                    </svg>
+                    <%= t '.edit' %>
+                </div>
+            <% end %>
         <% end %>
     </div>
 </div>
@@ -101,5 +103,7 @@
                 </div>
         </li>
     <% end %>
-    <%= link_to 'Adicionar', method_chosen_company_payment_methods_path(@company), class: 'btn btn-dark my-3' %>
+     <% if current_user && current_user.role == 'admin' || current_user.role == 'owner' %>
+        <%= link_to 'Adicionar', method_chosen_company_payment_methods_path(@company), class: 'btn btn-dark my-3' %>
+    <% end %>
 </ul>

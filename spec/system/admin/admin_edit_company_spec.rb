@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Admin edit company' do
     it 'successfully' do
+        admin_login
         Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                         email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
 
@@ -26,6 +27,7 @@ describe 'Admin edit company' do
     end
 
     it 'and edit token' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA', 
                         email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         old_token = company.token
@@ -38,6 +40,22 @@ describe 'Admin edit company' do
     end
     
     it 'and not accept blank field' do
-        
+        admin_login
+        Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
+                        email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
+
+        visit root_path
+        click_on 'Empresas'
+        click_on 'Codeplay cursos online LTDA'
+        click_on 'Editar'
+
+        fill_in 'CNPJ', with: ''
+        fill_in 'Razão Social', with: ''
+        fill_in 'Email', with: ''
+        fill_in 'Endereço', with: ''
+        uncheck 'check'
+        click_on 'Salvar Empresa'
+
+        expect(page).to have_content('não pode ficar em branco', count: 4)
     end
 end

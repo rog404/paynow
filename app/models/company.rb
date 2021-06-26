@@ -1,4 +1,5 @@
 class Company < ApplicationRecord
+    has_many :users
     has_many :payment_methods
     has_many :products
     

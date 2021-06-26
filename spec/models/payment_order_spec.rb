@@ -6,7 +6,6 @@ describe PaymentOrder do
       payment_order = PaymentOrder.new
 
       payment_order.valid?
-
       expect(payment_order.errors[:company_token]).to include('não pode ficar em branco')
       expect(payment_order.errors[:payment_method_token]).to include('não pode ficar em branco')
       expect(payment_order.errors[:product_token]).to include('não pode ficar em branco')

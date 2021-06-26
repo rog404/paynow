@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Admin view products' do
     it 'successfully' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                         email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :pix)
@@ -21,6 +22,7 @@ describe 'Admin view products' do
         expect(page).to have_content('99,90')
     end
     it 'and show empty msg' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                                   email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         

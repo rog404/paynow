@@ -1,11 +1,11 @@
 class PaymentOrder < ApplicationRecord
     validates :company_token, :payment_method_token, :product_token, :client_token, presence: true
-    validates :value, :discount_value, numericality: {greater_than_or_equal_to: 0}
     validates :token, uniqueness: true
 
     enum status: [:pending, :approved]
     
     before_save :default_values
+
     
     def product
         Product.where(token: self.product_token).first
@@ -16,7 +16,7 @@ class PaymentOrder < ApplicationRecord
     end
 
     def payment_method
-        Product.where(token: self.payment_method_token).first
+        PaymentMethod.where(token: self.payment_method_token).first
     end
 
     private

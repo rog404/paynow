@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class ClientsController < AutenticationController
     before_action :set_company, only: %i[index show create]
     before_action :set_client, only: %i[show]
 

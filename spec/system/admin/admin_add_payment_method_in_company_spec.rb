@@ -3,12 +3,12 @@ require 'rails_helper'
 describe 'Admin add payment method in company' do
     context 'as PIX' do
         it 'successfully' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :pix)
             Payment.create!(description: 'PIX Promoção', fee: 0.2, max_money_fee: 5.90, payment_type: :pix)
             Payment.create!(description: 'PIX Desativo', fee: 1.7, max_money_fee: 17.90, payment_type: :pix, state: :disabled)
-
             visit root_path
             click_on 'Empresas'
             click_on 'Codeplay cursos online LTDA'
@@ -24,6 +24,7 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('7,90')
         end
         it 'and cannot be blank' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :pix)
@@ -41,6 +42,7 @@ describe 'Admin add payment method in company' do
     end
     context 'as Boleto' do
         it 'successfully' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'Boleto', fee: 0.7, max_money_fee: 7.90, payment_type: :boleto)
@@ -63,6 +65,7 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('7,90')
         end
         it 'and cannot be blank' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :boleto)
@@ -80,6 +83,7 @@ describe 'Admin add payment method in company' do
     end
     context 'as Credit Card' do
         it 'successfully' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'Cartão Roxo', fee: 0.7, max_money_fee: 7.90, payment_type: :credit_card)
@@ -100,6 +104,7 @@ describe 'Admin add payment method in company' do
             expect(page).to have_content('7,90')
         end
         it 'and cannot be blank' do
+            admin_login
             Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                             email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
             payment = Payment.create!(description: 'Cartão', fee: 0.7, max_money_fee: 7.90, payment_type: :credit_card)

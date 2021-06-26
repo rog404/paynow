@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin edit payment' do
         it 'successfully' do
-
+            admin_login
             Payment.create(description: 'Roxinho', fee: 2.2, max_money_fee: 10.0, payment_type: :pix)
             
             visit root_path
@@ -25,7 +25,7 @@ describe 'Admin edit payment' do
         end
 
         it 'and cannot be blank' do
-
+            admin_login
             Payment.create(description: 'Roxinho', fee: 2.2, max_money_fee: 10.0, payment_type: :pix)
         
             visit root_path

@@ -21,17 +21,36 @@ describe 'Visitor creates account' do
             expect(page).to have_link('Pagamentos Pendentes')
         end
 
-        xit 'without blank field' do
-            
+        it 'without blank field' do
+            visit root_path
+            click_on 'Registrar'
+            click_on 'Criar Conta'
+
+            expect(page).to have_content('não pode ficar em branco', count: 2)
         end
 
-        xit 'password not match confirmation' do
+        it 'password not match confirmation' do
+            visit root_path
+            click_on 'Registrar'
+            fill_in 'Email', with: 'rogerio@paynow.com.br'
+            fill_in 'Nome', with: 'Rogerio [Admin]'
+            fill_in 'Senha', with: '123456'
+            fill_in 'Confirmação de Senha', with: '123456312'
+            click_on 'Criar Conta'
 
-            
+            expect(page).to have_content('não é igual a Senha')
         end
 
-        xit 'and unique email' do
-            
+        it 'and unique email' do
+            User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
+            visit root_path
+            click_on 'Registrar'
+            fill_in 'Email', with: 'rogerio@paynow.com.br'
+            fill_in 'Nome', with: 'Rogerio [Admin]'
+            fill_in 'Senha', with: '123456'
+            fill_in 'Confirmação de Senha', with: '123456312'
+            click_on 'Criar Conta'
+            expect(page).to have_content('já está em uso')
         end
 
         it 'and can logout' do
@@ -45,8 +64,16 @@ describe 'Visitor creates account' do
             expect(page).to have_link('Entrar')
         end
     end
-    xcontext 'as Company Owner' do
-        
+    context 'as Company Owner' do
+        visit root_path
+            click_on 'Registrar'
+            fill_in 'Email', with: 'rogerio@educamais.com.br'
+            fill_in 'Nome', with: 'Rogerio [Owner]'
+            fill_in 'Senha', with: '123456'
+            fill_in 'Confirmação de Senha', with: '123456'
+            click_on 'Criar Conta'
+
+            
     end
     xcontext 'as Company Employer' do
         

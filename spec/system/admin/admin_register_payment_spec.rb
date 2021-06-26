@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'Admin register payment' do
     context 'as PIX' do
         it 'successfully' do
+            user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
+            login_as user
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -22,6 +24,8 @@ describe 'Admin register payment' do
         end
 
         it 'and cannot be blank' do
+            user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
+            login_as user
         
             visit root_path
             click_on 'Modelos de Pagamento'
@@ -33,6 +37,11 @@ describe 'Admin register payment' do
         end
 
         it 'and fee and max money fee must be numerical' do
+            company_paynow = Company.create!(cnpj: '0000000000', name: 'PAYNOW Company',
+                email: 'faturamento@paynow.com.br', address: 'R. Paynow')
+            user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456', company: company_paynow)
+
+            login_as user
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -49,6 +58,8 @@ describe 'Admin register payment' do
 
     context 'as Credit Card' do
         it 'successfully' do
+            user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
+            login_as user
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -69,6 +80,8 @@ describe 'Admin register payment' do
 
     context 'as Boleto' do
         it 'successfully' do
+            user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
+            login_as user
             visit root_path
             click_on 'Modelos de Pagamento'
             click_on 'Adicionar'
@@ -85,5 +98,11 @@ describe 'Admin register payment' do
             expect(page).to have_content('3,5')
             expect(page).to have_content('13,50')
         end
+    end
+
+    it 'must be looged in to create payment' do
+        visit new_payment_path
+        
+        expect(current_path).to eq(new_user_session_path)
     end
 end

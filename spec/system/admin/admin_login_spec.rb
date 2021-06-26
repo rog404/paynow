@@ -3,7 +3,6 @@ require 'rails_helper'
 describe 'Admin Log' do
     it 'successfully' do
         user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
-
         visit root_path
         click_on 'Entrar'
         fill_in 'Email', with: 'rogerio@paynow.com.br'
@@ -20,5 +19,17 @@ describe 'Admin Log' do
         expect(page).to_not have_link('Registrar')
         expect(page).to_not have_link('Entrar')
         expect(page).to have_selector(:css, "svg#i-signout")
+    end
+
+    it 'without login cant see admin links' do
+        visit root_path
+
+        expect(page).to_not have_link('Empresas')
+        expect(page).to_not have_link('Modelos de Pagamento')
+        expect(page).to_not have_link('Pagamentos Pendentes')
+        expect(page).to_not have_link('Usuários')
+        expect(page).to have_link('Registrar')
+        expect(page).to have_link('Entrar')
+        expect(page).to_not have_selector(:css, "svg#i-signout")
     end
 end

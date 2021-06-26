@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Admin creates product' do
     it 'successfully' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                                   email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         payment = Payment.create!(description: 'PIX', fee: 0.7, max_money_fee: 7.90, payment_type: :pix)
@@ -29,6 +30,7 @@ describe 'Admin creates product' do
         expect(page).to have_content('99,90')
     end
     it 'and name and price cannot be blank' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                                   email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         
@@ -42,6 +44,7 @@ describe 'Admin creates product' do
         expect(page).to have_content('não pode ficar em branco', count: 2)
     end
     it 'and price and discount must be numerical more than 0' do
+        admin_login
         company = Company.create!(cnpj: '87470788000188', name: 'Codeplay cursos online LTDA',
                                   email: 'faturamento@codeplay.com.br', address: 'Av. Dutra, 4563, São Paulo - SP')
         

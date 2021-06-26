@@ -9,7 +9,7 @@
         <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="row row-cols-lg-5 gx-1 container justify-content-center">
                     <div class="col-3 text-center align-self-center">
-                        <span class="badge  <%= order.pending? ? 'bg-warning' : 'bg-dark' %> rounded-pill"><%= PaymentOrder.human_attribute_name "status.#{order.status}" %></span>
+                        <span class="badge  <%= order.pending? ? 'bg-warning' : 'bg-dark' %>"><%= PaymentOrder.human_attribute_name "status.#{order.status}" %></span>
                     </div>
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= t '.product' %></div>
@@ -24,7 +24,7 @@
                         <div class="card-text"><%= number_to_currency order.discount_value %></div>
                     </div>
                     <div class="col-3 text-center align-self-center">
-                        <%= link_to approve_payment_order_path(order) do %>
+                        <%= link_to approve_payment_order_path(order), method: :patch do %>
                             <div class= "btn btn-success">
                                 <svg id="i-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38" width="18" height="18" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                     <path d="M2 20 L12 28 30 4" />

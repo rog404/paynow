@@ -12,7 +12,7 @@
                         <div class="btn btn-dark "></div>
                     </div>
                     <div class="col-3 text-center align-self-center">
-                        <span class="badge  <%= payment.active? ? 'bg-success' : 'bg-dark' %> rounded-pill"><%= Payment.human_attribute_name "state.#{payment.state}" %></span>
+                        <span class="badge  <%= payment.active? ? 'bg-success' : 'bg-dark' %> "><%= Payment.human_attribute_name "state.#{payment.state}" %></span>
                     </div>
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= payment.description %></div>

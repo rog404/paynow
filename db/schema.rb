@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_20_210921) do
+ActiveRecord::Schema.define(version: 2021_06_21_192049) do
 
   create_table "boleto_companions", force: :cascade do |t|
     t.string "bank_code"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(version: 2021_06_20_210921) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "role"
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -130,4 +132,5 @@ ActiveRecord::Schema.define(version: 2021_06_20_210921) do
   add_foreign_key "payment_methods", "companies"
   add_foreign_key "payment_methods", "payments"
   add_foreign_key "products", "companies"
+  add_foreign_key "users", "companies"
 end

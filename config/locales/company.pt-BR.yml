@@ -4,6 +4,7 @@ pt-BR:
     index:
       empty: Nenhuma empresa cadastrada
       title: Empresas
+      denied: Acesso Restrito!
     new:
       title: Adicionar uma nova empresa
       back: Voltar

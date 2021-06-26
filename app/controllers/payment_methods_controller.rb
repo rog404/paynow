@@ -1,4 +1,4 @@
-class PaymentMethodsController < ApplicationController
+class PaymentMethodsController < AutenticationController
     before_action :set_payment_method, only: %i[edit update]
     before_action :set_company, only: %i[method_chosen new create edit update]
     before_action :set_payment, only: %i[create]

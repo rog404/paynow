@@ -1,12 +1,14 @@
-class CompaniesController < ApplicationController
+class CompaniesController < AutenticationController
     before_action :set_company, only: %i[show edit update retoken]
     before_action :set_method, only: %i[show]
+    before_action :user_admin, only: %i[index]
 
     def index
-        @companies = Company.order(state: :desc)
+        @companies = Company.where.not(cnpj: '000000000000').order(state: :desc)
     end 
    
     def show
+
     end
 
     def new
