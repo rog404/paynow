@@ -16,4 +16,10 @@ Rails.application.routes.draw do
     end
     patch 'retoken', on: :member
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :clients, only: %i[index show create], param: :token
+    end
+  end
 end

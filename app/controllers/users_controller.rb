@@ -9,10 +9,6 @@ class UsersController < AutenticationController
         end
     end
 
-    def create
-        @user = 
-    end
-
     private
 
 

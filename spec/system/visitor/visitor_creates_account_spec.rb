@@ -55,7 +55,6 @@ describe 'Visitor creates account' do
 
         it 'and can logout' do
             user = User.create!(name: 'Rogerio', email: 'rogerio@paynow.com.br', password: '123456')
-
             login_as user
             visit root_path
             click_on 'Sair'
@@ -63,19 +62,5 @@ describe 'Visitor creates account' do
             expect(page).to have_text('Saiu com sucesso')
             expect(page).to have_link('Entrar')
         end
-    end
-    context 'as Company Owner' do
-        visit root_path
-            click_on 'Registrar'
-            fill_in 'Email', with: 'rogerio@educamais.com.br'
-            fill_in 'Nome', with: 'Rogerio [Owner]'
-            fill_in 'Senha', with: '123456'
-            fill_in 'Confirmação de Senha', with: '123456'
-            click_on 'Criar Conta'
-
-            
-    end
-    xcontext 'as Company Employer' do
-        
     end
 end
