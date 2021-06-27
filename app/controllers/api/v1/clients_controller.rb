@@ -15,13 +15,14 @@ class Api::V1::ClientsController < ActionController::API
         @client = Client.new(client_params)
         @client.save!
         render json: @client.as_json(except: [:id, :created_at, :updated_at]), status: :created
-    rescue
+    rescue ActiveRecord::RecordInvalid
         render json: @client.errors, status: :unprocessable_entity
+    rescue ActionController::ParameterMissing
+        render status: :precondition_failed, json: { errors: 'parâmetros inválidos'}
     end
 
     private
     def client_params
         params.require(:client).permit(:name, :cpf)
-        
     end
 end

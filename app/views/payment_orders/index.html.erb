@@ -6,8 +6,8 @@
 <% end %>
 <ul class="list-group">
     <% @payment_orders.each do |order| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="row row-cols-lg-5 gx-1 container justify-content-center">
+        <li class="list-group-item d-flex justify-content-between align-items-start px-0">
+                <div class="row row-cols-lg-6 gx-4 container justify-content-center px-0 mx-0">
                     <div class="col-3 text-center align-self-center">
                         <span class="badge  <%= order.pending? ? 'bg-warning' : 'bg-dark' %>"><%= PaymentOrder.human_attribute_name "status.#{order.status}" %></span>
                     </div>
@@ -18,6 +18,10 @@
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= t '.token' %></div>
                         <div class="card-text"><%= order.token %></div>
+                    </div>
+                    <div class="col-3 text-center align-self-center">
+                        <div class="fw-bold"><%= Client.find_by(token: order.client_token).name %></div>
+                        <div class="card-text card-text-font"><%= Client.find_by(token: order.client_token).cpf %></div>
                     </div>
                     <div class="col-3 text-center align-self-center">
                         <div class="fw-bold"><%= t '.final_value' %></div>

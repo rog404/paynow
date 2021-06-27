@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :clients, only: %i[index show create], param: :token
+      resources :company_clients, only: %i[create]
+      resources :payment_orders, only: %i[show create], param: :token
     end
   end
 end

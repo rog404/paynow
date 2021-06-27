@@ -24,7 +24,7 @@
                   <circle cx="16" cy="24" r="1" />
               </svg>
             </span>
-            <%= f.password_field :password, class: 'form-control', autofocus: true%>
+            <%= f.password_field :password, class: 'form-control' %>
         </div>         
         <% resource.errors[:password].each do |error| %>
             <div class="alert alert-danger"><%= error %></div>

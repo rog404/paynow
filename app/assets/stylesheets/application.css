@@ -22,3 +22,6 @@
     right: 0;
     background-color: whitesmoke;
  }
+ .card-text {
+    font-size: 14px;
+ }

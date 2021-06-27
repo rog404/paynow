@@ -81,5 +81,24 @@ describe 'Client API' do
             expect(parsed_body['name']).to eq(['não pode ficar em branco'])
             expect(parsed_body['cpf']).to include('não pode ficar em branco')
         end
+        it 'and cpf must be unique' do
+            Client.create!(name: 'Rogerio', cpf: '01770967214')
+            post '/api/v1/clients', params: {
+                client: {name: 'Rogerio', cpf: '01770967214'}
+            }
+
+            expect(response).to have_http_status(422)
+            expect(response.content_type).to include('application/json')
+            parsed_body = JSON.parse(response.body)
+            expect(parsed_body['cpf']).to include('já está em uso')
+        end
+        it 'should be a model client' do
+            post '/api/v1/clients'
+
+            expect(response).to have_http_status(412)
+            expect(response.content_type).to include('application/json')
+            parsed_body = JSON.parse(response.body)
+            expect(parsed_body['errors']).to include('parâmetros inválidos')
+        end
     end
 end
