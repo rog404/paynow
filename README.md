@@ -1,17 +1,17 @@
 
-# Paynow
-
+# Paynow 
+![Badge](https://img.shields.io/github/languages/top/rog404/paynow)
 Plataforma de pagamento básica apenas para estudos.
 
 Atualmente o sistema contem:
 
-* Login de Usuário (Admin/Employeer)
-* Cadastro de Empresas
-* Cadastro de Modelo de Pagamento
-* Cadastro de Métodos de Pagamento para Empresas cadastradas
-* Cadastro de Produtos
-* Vizualização de Clientes
-* Vizualização de Pagamentos Pendentes
+* [x] Login de Usuário (Admin/Employeer)
+* [x] Cadastro de Empresas
+* [x] Cadastro de Modelo de Pagamento
+* [x] Cadastro de Métodos de Pagamento para Empresas cadastradas
+* [x] Cadastro de Produtos
+* [x] Vizualização de Clientes
+* [x] Vizualização de Pagamentos Pendentes
 
 ## Instalação 
 
@@ -57,8 +57,6 @@ rails db:seed
   
 ## Roadmap (Próximas Features)
 
-- Adicionar API de consultas
-
 - Auditoria de edições
 
 - Autorização por role nos controllers
@@ -73,7 +71,7 @@ Entre em contato para saber como ajudar.
 
 #### O projeto está finalizado?
 
-Não. ainda estamos em desenvolvimento
+Não. ainda está em desenvolvimento
 
 #### Onde aprendeu a desenvolver esse software?
 
