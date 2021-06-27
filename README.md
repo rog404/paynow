@@ -1,6 +1,8 @@
 
 # Paynow 
 ![Badge](https://img.shields.io/github/languages/top/rog404/paynow)
+
+
 Plataforma de pagamento básica apenas para estudos.
 
 Atualmente o sistema contem:
@@ -12,7 +14,8 @@ Atualmente o sistema contem:
 * [x] Cadastro de Produtos
 * [x] Vizualização de Clientes
 * [x] Vizualização de Pagamentos Pendentes
-
+* [x] Vizualização de Pagamentos Pendentes
+* [x] API de Criação de Clientes 
 ## Instalação 
 
 - Requisitos: ruby 3.0.1 & rails 6.1.3.2
@@ -35,8 +38,6 @@ Caso queira gerar dados para melhor vizualização
 ```bash
 rails db:seed
 ```
-## Como usar?
-
 
 
   
@@ -48,24 +49,40 @@ rails db:seed
  
 
   
-## API (não implementado)
+## API Reference
 
-#### Get all items
+#### Get all clients
 
+```http
+  GET /api/v1/clients
+```
 
+#### Create client
 
+```http
+  POST /api/v1/clients
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `name`      | `string` | **Required**. Name of client |
+| `cpf`      | `string` | **Required**. Cpf of client (must be unique) |
+  
+  
   
 ## Roadmap (Próximas Features)
 
 - Auditoria de edições
 
-- Autorização por role nos controllers
+
+
 ## Contribuições
 
 Contribuições são sempre bem vindas!
 
 Entre em contato para saber como ajudar.
 
+  
   
 ## FAQ
 
