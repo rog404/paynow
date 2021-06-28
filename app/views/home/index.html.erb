@@ -1,0 +1,9 @@
+<h1>Recibos</h1>
+<%= form_for :payment_order, url: payment_order_path(:token), method: :get, class: 'row g-3' do |form| %>
+    <div class="col-auto">
+        <%= form.text_field :token, id: 'form', class: 'form-control', placeholder: 'Digite o token do Recibo Ex: H23iU123hUI2h21' %>
+    </div>
+    <div class="col-auto">
+        <%= form.submit 'Procurar', class: 'btn btn-dark my-3'  %>
+    </div>
+<% end  %>

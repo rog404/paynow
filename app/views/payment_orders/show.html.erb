@@ -1,0 +1,51 @@
+
+<h1>Recibo</h1>
+<ul class="list-group my-3 list-group-item-success">
+    <li class="list-group-item d-flex justify-content-between align-items-start <%= @payment_order.pending? ? 'list-group-item-warning' : 'list-group-item-success' %>">
+        <div class="row row-cols-lg-5 gx-1 container justify-content-center">
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">TOKEN</div>
+                <div class="card-text"><%= @payment_order.token %></div>
+            </div> 
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Produto</div>
+                <div class="card-text"><%= Product.find_by(token: @payment_order.product_token).name %></div>
+            </div>
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Status</div>
+                <div class="card-text"><%= PaymentOrder.human_attribute_name "status.#{@payment_order.status}" %></div>
+            </div>
+        </div>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="row row-cols-lg-5 gx-1 container justify-content-center">
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Cliente</div>
+                <div class="card-text"><%= Client.find_by(token: @payment_order.client_token).name %></div>
+            </div> 
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">CPF</div>
+                <div class="card-text"><%= Client.find_by(token: @payment_order.client_token).cpf %></div>
+            </div>
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Empresa</div>
+                <div class="card-text"><%= Company.find_by(token: @payment_order.company_token).name %></div>
+            </div>
+        </div>
+    </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="row row-cols-lg-5 gx-1 container justify-content-center">
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Preço Original</div>
+                <div class="card-text"><%= number_to_currency Product.find_by(token: @payment_order.product_token).price %></div>
+            </div> 
+            <div class="col-3 text-center align-self-center">
+                <div class="fw-bold">Preço Final</div>
+                <div class="card-text"><%= number_to_currency @payment_order.discount_value %></div>
+            </div>
+            <div class="col-3 text-center align-self-center">
+                <div class="btn btn-dark">Imprimir</div>
+            </div>
+        </div>
+    </li>
+</ul>

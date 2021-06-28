@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :payment_orders, only: %i[index] do
     patch 'approve', on: :member
   end
+  resources :payment_orders, only: %i[show], param: :token
 
   resources :companies, only: %i[index show new create edit update] do
     resources :clients, only: %i[index]
