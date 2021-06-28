@@ -58,7 +58,7 @@ rails db:seed
 ```http
   GET /api/v1/clients
 ```
-200 - OK (retorna array json com clientes `retorna vazio se não tiver clientes`)
+- 200 - OK (retorna array json com clientes `retorna vazio se não tiver clientes`)
  
 #### Criar clientes
 
@@ -71,8 +71,8 @@ rails db:seed
 | `name`      | `string` | **Required**. Nome do Cliente |
 | `cpf`      | `string` | **Required**. CPF do Cliente (único) |
   
-  201 - Criado (retorna json com token do cliente criado)
-  412 / 422 (retorna array json com erros)
+  - 201 - Criado (retorna json com token do cliente criado)
+  - 412 / 422 (retorna array json com erros)
   
  #### Ligar Cliente a determinada Empresa
 
@@ -86,8 +86,8 @@ rails db:seed
 | `nome`  | `string` | **Required**. Nome do Cliente |
 | `company_token` | `string` | **Required**. Token da Empresa |
   
-  201 - Criado (retorna json com token do cliente criado `caso o cliente ainda não for gerado ele cria o cliente e faz a ligação com a empresa`)
-  412 / 422 (retorna array json com erros)
+  - 201 - Criado (retorna json com token do cliente criado `caso o cliente ainda não for gerado ele cria o cliente e faz a ligação com a empresa`)
+  - 412 / 422 (retorna array json com erros)
   
   #### Visualizar Cobreça pelo Token
 
@@ -95,8 +95,8 @@ rails db:seed
   POST /api/v1/payment_orders/#{token}
 ```
   
-  200 - ok (retorna json com informações da cobrança)
-  404 (se não encontrar)
+  - 200 - OK (retorna json com informações da cobrança)
+  - 404 (se não encontrar)
   
    #### Emissão de Cobrança
 
@@ -111,8 +111,8 @@ rails db:seed
 | `product_token` | `string` | **Required**. Token da Produto |
 | `client_token` | `string` | **Required**. Token da Cliente |
   
-  201 - Criado (retorna json com a cobrança criada)
-  412 / 422 (retorna array json com erros)
+  - 201 - Criado (retorna json com a cobrança criada)
+  - 412 / 422 (retorna array json com erros)
   
 ## Roadmap (Próximas Features)
 
