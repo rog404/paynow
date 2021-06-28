@@ -12,6 +12,8 @@ class Api::V1::CompanyClientsController < ActionController::API
         else
             @client = Client.new client_params
             @client.save!
+            @company_client = CompanyClient.new(company: @company, client: @client)
+            @company_client.save!
             render status: :created, json: { ok: 'cliente adicionado a compania', client_token: @client.token}
         end
     rescue ActiveRecord::RecordInvalid
